@@ -35,11 +35,19 @@ public class Main
 		f.ajouter(ennemi);
 		
 		int compteur = 0;
-		//int delai = 0;
+		Random rand = new Random();
 		
 		while(true)
 		{			
-			try {
+			try
+			{
+				Thread.sleep(10);
+			}
+			catch (Exception e) {
+				System.out.println ( e );
+			}
+			try 
+			{
 		        Thread.sleep(30);
 		    }
 		    catch (InterruptedException ex) {}
@@ -83,6 +91,16 @@ public class Main
 					f.supprimer(laser.get(j));
 					laser.remove(j);
 				}
+			}
+			//Déplacement de l'ennemi à gauche
+			if(ennemi.getA().getY() > 0 && ennemi.getA().getX() > 0)
+			{
+				ennemi.translater(-5,0);
+			}
+			//Déplacement de l'ennemi à droite
+			if(ennemi.getA().getY() > 0 && ennemi.getA().getX() < f.getWidth()-70)
+			{
+				ennemi.translater(5,-5);
 			}
 			
 			
