@@ -4,9 +4,10 @@ import MG2D.*;
 import MG2D.geometrie.*;
 import java.util.*;
 
-public class Main {
-	public static void main(String[] args){
-		
+public class Main 
+{
+	public static void main(String[] args)
+	{		
 		//Instanciation d'une fenêtre
 		Fenetre f = new Fenetre("MaFenetre", 900, 600);
 		//instanciation du clavier
@@ -34,17 +35,10 @@ public class Main {
 		f.ajouter(ennemi);
 		
 		int compteur = 0;
-		int delai = 0;
+		//int delai = 0;
 		
 		while(true)
-		{
-			try {
-				Thread.sleep (20);
-			}
-			catch ( Exception e ) {
-				System.out.println ( e );
-			}
-			
+		{			
 			try {
 		        Thread.sleep(30);
 		    }
@@ -70,13 +64,13 @@ public class Main {
 			{
 				vaisseau.translater(0,-5);
 			}
-			//Si appuie sur la touche espace, tire des missiles
+			//Si appuie sur la touche espace, tir des missiles
 			if(clavier.getEspace())
 			{
 				if(compteur>13)
 				{
 					laser.add(new Texture("../laser.png", new Point(((vaisseau.getB().getX()-vaisseau.getA().getX())/2) + vaisseau.getA().getX(),vaisseau.getB().getY()+15), 5,50));
-					f.ajouter(laser.get(0));
+					f.ajouter(laser.get(laser.size()-1));
 					compteur=0;
 				}
 			}
@@ -94,7 +88,6 @@ public class Main {
 			
 			f.rafraichir();
 			compteur = compteur +1;
-			
 		}
 	}
 }
